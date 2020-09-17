@@ -1,0 +1,31 @@
+<div class="modal fade" id="email-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="email-title" class="modal-title col-8" id="exampleModalLabel"></h5>
+          <div class="col-3">
+            <a id="modal-archive" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-trigger="hover" data-placement="bottom"><i class="far fa-folder"></i></a>
+            <a id="modal-reply" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Reply"><i class="fas fa-reply"></i></a>
+          </div>
+          <div class="col-1">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="small email-info">
+            <p>from: <span class="text-muted" id="mail-sender"></span></p>
+            <p>to: <span class="text-muted" id="mail-recipients"></span></p>
+            <p>subject: <span class="text-muted" id="mail-subject"></span></p>
+            <p>time: <span class="text-muted" id="mail-timestamp"></span></p>
+          </div>
+          <hr>
+          <p id="mail-body"></p>
+        </div>
+        <div class="modal-footer">
+          <button id="reply" type="button" class="btn btn-primary"><i class="fas fa-reply"></i> Reply</button>
+        </div>
+      </div>
+    </div>
+</div>

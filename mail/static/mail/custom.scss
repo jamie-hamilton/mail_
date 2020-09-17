@@ -1,0 +1,149 @@
+
+$theme-colors: (
+    "primary": rgb(61, 201, 147),
+    "secondary": rgb(23,162,184),
+  );
+
+$primary: rgb(61, 201, 147);
+$secondary: rgb(23,162,184);
+$tooltip-color: $primary;
+$tooltip-bg: white;
+
+// Required
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// Optionals
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/custom-forms";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/utilities";
+
+
+body {
+    font-family: $font-family-monospace;
+
+    // Remove gutter bootstrap grid gutter for logout/archive columns
+    @media (min-width: map-get($grid-breakpoints, xs)) and (max-width: map-get($grid-breakpoints, sm)){
+        .row > .col,
+        .row > [class*="col-"] {
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+        
+        .row > .col #archived {
+          padding-right: 0px;
+        }
+        .row > [class*="text-right"] {
+            padding-left: 0px;
+        }
+    }
+    a {
+        color: $link-color;
+        text-decoration: none;
+    }
+    a:hover {
+        color: $link-hover-color;
+    }
+    a:visited {
+        color: darken($link-color, 20%);
+    }
+    h2, h4, h6 {
+        margin-bottom: $spacer;
+        color: $gray-600;
+    }
+    .banner {
+        width: 100%;
+        margin: 0;
+        background: $primary;
+    }
+    .brand {
+        color: white;
+        font-weight: bold;
+        letter-spacing: 4px;
+        padding: $spacer 0;
+    }
+    .user-email {
+        font-size: small;
+        color: $gray-600;
+        display: inline-block;
+        border: 1px solid $primary;
+        border-radius: $border-radius-sm;
+        padding: 5px;
+    }
+    form, textarea {
+        margin-bottom: ($spacer * .75);
+    }
+    #alert-box {
+        ul {
+            list-style-type: none;
+        }
+    }
+    .btn .badge-primary {
+        top: -2px;
+        color: $primary;
+        background: transparent;
+        border: 1px solid $primary;
+    }
+    .tooltip-main, .tooltip-inner {
+        border: 1px solid rgba(61, 201, 147,0.8);
+        font-size: x-small;
+    }
+    .btn:hover .badge-primary {
+        color: black;
+        border: 1px solid black;
+    }
+    #emails-view {    
+
+        .row {
+            margin-left: 0;
+            margin-right:0;
+            color: $gray-600;
+            padding: 10px;
+        }
+        .unread.email-detail {
+            color: $primary;
+            font-weight: bold;
+            background: rgb(253, 253, 253);
+            opacity: 0.9;
+        }
+        .email-detail {
+            width: 100%;
+            border: 1px solid $primary;
+            border-radius: $border-radius-sm;
+            background: rgba(126, 196, 206, 0.2);
+            opacity: 0.7;
+        }
+        .email-detail:hover, .unread.email-detail:hover {
+            background: rgba(210, 249, 255, 0.6);
+            opacity: 0.9;
+            cursor: pointer;
+        }
+    }
+    
+    .small, .small p {
+        font-size: small;
+        margin-bottom: 0.2rem;
+    }
+
+    .email-info {
+        background: rgba(210, 249, 255, 0.3);
+        color: $primary;
+    }
+
+    #modal-body {
+        font-size: $font-size-sm;
+    }
+}

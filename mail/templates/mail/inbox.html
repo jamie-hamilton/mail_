@@ -1,0 +1,50 @@
+{% extends "mail/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <h6 class="user-email">{{ request.user.email }}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10">
+            <button class="btn btn-sm btn-outline-primary" id="inbox-viewer"><span class="badge badge-primary" id="unread"></span> Inbox</button>
+            <button class="btn btn-sm btn-outline-primary" id="compose"><i class="far fa-edit"></i> Compose</button>
+            <button class="btn btn-sm btn-outline-primary" id="sent-viewer"><i class="far fa-paper-plane"></i> Sent</button>
+            <button class="btn btn-sm btn-outline-primary" id="archive-viewer"><i class="far fa-folder"></i> Archived</button>
+        </div>
+        <div class="col-2 text-right">
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Log Out"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </div>
+    <hr>
+    <div id="alert-box">
+        <ul id="alert-message"></ul>
+        
+    </div>
+    <div id="emails-view" class="container"></div>
+
+    <div id="compose-view">
+        <h4>New Email</h4>
+        <form class="mb-2" id="compose-form">
+            <div class="form-group">
+                From: <input disabled class="form-control" value="{{ request.user.email }}">
+            </div>
+            <div class="form-group">
+                To: <input id="compose-recipients" class="form-control">
+            </div>
+            <div class="form-group">
+                <input class="form-control" id="compose-subject" placeholder="Subject">
+            </div>
+            <textarea class="form-control" id="compose-body" placeholder="Body"></textarea>
+            <button id="send" type="submit" class="btn btn-primary" value="Reply"><i class="far fa-paper-plane"></i> Send</button>
+        </form>
+    </div>
+    {% include 'mail/email-modal.html' %}
+    {% include 'mail/reply-modal.html' %}
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/inbox.js' %}"></script>
+{% endblock %}
