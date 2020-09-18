@@ -29,6 +29,7 @@ var messages = [];
 var new_mail;
 var mailbox;
 
+
 // Cookies for posts & puts
 // https://docs.djangoproject.com/en/3.1/ref/csrf/#ajax
 function getCookie(name) {
@@ -244,19 +245,22 @@ function get_email(email_id) {
 
 // Fetch emails for corresponding mailbox
 function display_emails() {
+  // Clear view
+  let emails_view = document.querySelector('#emails-view');
+  emails_view.textContent = '';
+
+  // Show the mailbox name and loader
+  emails_view.innerHTML = `<h4>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h4><div class="stage"><div class="dot-pulse"></div></div>`;
+
+  let email_outer = document.createElement('div');
+  emails_view.append(email_outer);
+  email_outer.className = `email-outer`;
+  email_outer.style.display = 'none';
   fetch(`/emails/${mailbox}`)
   .then(response => response.json())
   .then(emails => {
     // Set new_mail counter to 0 if opening inbox
     if (mailbox === 'inbox') new_mail = 0;
-
-    // Clear view
-    let emails_view = document.querySelector('#emails-view');
-    emails_view.textContent = '';
-
-    // Show the mailbox name
-    emails_view.innerHTML = `<h4>${mailbox.charAt(0).toUpperCase() + mailbox.slice(1)}</h4>`;
-
     // Create elements for each email retrieved
     emails.forEach(email => {
       let unread;
@@ -274,7 +278,7 @@ function display_emails() {
       let element = document.createElement('div');
       element.className = `email-container row align-items-center`;
       element.id  = `email-row-${email.id}`
-      emails_view .append(element);
+      email_outer.append(element);
 
       // Email sender, title and timestamp column
       let email_detail = document.createElement('div');
@@ -315,7 +319,12 @@ function display_emails() {
           archive_email(email.id); // EventListener for archive click
         });
       }
-    });
+    })
+  })
+  .then(() => {
+    document.querySelector('.stage').remove();
+    email_outer.style.display = 'block';
+    email_outer.classList.add('fade-in');
   });
 }
 
@@ -388,6 +397,7 @@ function compose_email() {
 
 function load_mailbox(view) {
   mailbox = view;
+
   // Show the mailbox and hide other views
   document.querySelector('#emails-view').style.display = 'block';
   document.querySelector('#compose-view').style.display = 'none';

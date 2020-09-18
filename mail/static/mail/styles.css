@@ -6153,44 +6153,106 @@ body {
   body #modal-body {
     font-size: 0.875rem; }
 
+/* FADE IN FADE OUT */
+.fade-in {
+  animation: fade-in linear 0.5s;
+  -moz-transition: fade-in 0.5s linear;
+  -o-transition: fade-in 0.5s linear;
+  -webkit-transition: fade-in 0.5s linear;
+  transition: fade-in 0.5s linear; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-moz-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-o-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@-ms-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 /* L O A D E R */
-.loader,
-.loader:after {
-  border-radius: 50%;
-  width: 1em;
-  height: 1em; }
-
-.loader {
-  color: #FF1493;
-  margin: 40vh auto;
-  font-size: 5em;
+/* https://nzbin.github.io/three-dots/ */
+.stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation: load 1.1s infinite linear;
-  animation: load 1.1s infinite linear; }
+  padding: 30% 0;
+  margin: 0 -5%;
+  overflow: hidden; }
 
-@-webkit-keyframes load {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-@keyframes load {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-#loadingDiv {
+.dot-pulse {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3dc993;
+  color: #3dc993;
+  box-shadow: 9999px 0 0 -5px #3dc993;
+  animation: dotPulse 1.5s infinite linear;
+  animation-delay: .25s; }
+
+.dot-pulse::before, .dot-pulse::after {
+  content: '';
+  display: inline-block;
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(52, 58, 64, 0.9); }
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3dc993;
+  color: #3dc993; }
+
+.dot-pulse::before {
+  box-shadow: 9984px 0 0 -5px #3dc993;
+  animation: dotPulseBefore 1.5s infinite linear;
+  animation-delay: 0s; }
+
+.dot-pulse::after {
+  box-shadow: 10014px 0 0 -5px #3dc993;
+  animation: dotPulseAfter 1.5s infinite linear;
+  animation-delay: .5s; }
+
+@keyframes dotPulseBefore {
+  0% {
+    box-shadow: 9984px 0 0 -5px #3dc993; }
+  30% {
+    box-shadow: 9984px 0 0 2px #3dc993; }
+  60%,
+    100% {
+    box-shadow: 9984px 0 0 -5px #3dc993; } }
+@keyframes dotPulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px #3dc993; }
+  30% {
+    box-shadow: 9999px 0 0 2px #3dc993; }
+  60%,
+    100% {
+    box-shadow: 9999px 0 0 -5px #3dc993; } }
+@keyframes dotPulseAfter {
+  0% {
+    box-shadow: 10014px 0 0 -5px #3dc993; }
+  30% {
+    box-shadow: 10014px 0 0 2px #3dc993; }
+  60%,
+    100% {
+    box-shadow: 10014px 0 0 -5px #3dc993; } }
 
 /*# sourceMappingURL=styles.css.map */
