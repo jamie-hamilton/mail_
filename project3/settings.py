@@ -35,7 +35,10 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mail-api-app.herokuapp.com',
+    '127.0.0.1'
+    ]
 
 
 # Application definition
