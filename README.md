@@ -24,7 +24,7 @@ __tl;dr:__
 ![mail screenshot](https://s3.eu-west-2.amazonaws.com/media.jh-portfolio/media/project_images/mail-1.png)
 
 
-This project was completed as part of [CS50’s Web Programming with Python and JavaScript](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript) course, following an investigation of user interface design. 
+This project was completed as part of Harvard's [CS50’s Web Programming with Python and JavaScript](https://online-learning.harvard.edu/course/cs50s-web-programming-python-and-javascript) course, following an investigation of user interface design. 
 
 After a lot of fiddling with data, models, views and paths in the earlier weeks of the course, the lectures that preceded this task looked into how we can use JavaScript and CSS - along with additional tools like Bootstrap, Sass and React - to make for a better user experience.
 
